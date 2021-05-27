@@ -23,11 +23,7 @@ setInterval(function () {
     for (let letter of letters){
         letter.style.color = randomColor()
     }
-<<<<<<< HEAD
-}, 2000)
-=======
 }, 400)
->>>>>>> first_branch
 
 // to make transitiono of colors smoother use CSS
 // we can set transition effect and change font style jusing css.
