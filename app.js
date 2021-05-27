@@ -1,67 +1,30 @@
-document.addEventListener('DOMContentLoaded', function(){  
-  
-  const gameContainer = document.querySelector(".game");
-  let pickedColors = [];
-  const foundColors = [];
+const h1 = document.querySelector('h1')
+// h1.style.color = 'purple';
+h1.style.fontSize = '15em';
+h1.style.fontFamily = 'Helvetica'
 
-  const COLORS = [
-    "red",
-    "blue",
-    "green",
-    "orange",
-    "purple",
-    "yellow",
-    "red",
-    "blue",
-    "green",
-    "orange",
-    "purple",
-    "yellow"
-  ];
+const body = document.querySelector('body')
+body.style.display = 'flex';
+body.style.justifyContent = 'center';
+// body.style.alignItems = 'center';
+body.style.background = '100vh black';
+
+function randomColor (){
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r},${g},${b})`
+}
+
+const letters = document.querySelectorAll('.letter')
 
 
-  // randomly sort the array
-  COLORS.sort(() => 0.5 - Math.random())
-
-  // create a function to check if two color match or not
-  function checkColorMatch(){
-    
-  }
- 
-
-  // create a function to build div element for each color
-  function buildColors(){
-    for (let color of COLORS){
-      const newDiv = document.createElement('div')
-      newDiv.setAttribute('data-color', color)
-      colorId = color
-      newDiv.addEventListener('click', function(event){
-        const divs = event.target.setAttribute('id', event.target.getAttribute('data-color'))
-        pickedColors.push(event.target.getAttribute('data-color'))
-        if (pickedColors.length === 2){
-          setTimeout(function(){
-            if (pickedColors[0] === pickedColors[1]){
-              // alert('Good Job! You Found Two Similar Colors')
-              foundColors.push(newDiv)
-            }
-
-            else{
-              event.target.removeAttribute('id')
-                  
-            }
-            pickedColors = [] 
-            const p = document.getElementById('p')
-            p.innerText = foundColors.length
-
-          }, 500)
-
-        }
-      })
-      gameContainer.append(newDiv)
-
+setInterval(function () {
+    for (let letter of letters){
+        letter.style.color = randomColor()
     }
-  }
+}, 2000)
 
-  buildColors()
+// to make transitiono of colors smoother use CSS
+// we can set transition effect and change font style jusing css.
 
-})
